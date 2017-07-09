@@ -35,7 +35,7 @@ public class Mutation implements GraphQLRootResolver {
         return userRepository.saveUser(newUser);
     }
 
-    public SigninPayload signinUser(AuthData auth) throws IllegalAccessException {
+    public SigninPayload signinUser(AuthData auth) {
         User user = userRepository.findByEmail(auth.getEmail());
         if (user.getPassword().equals(auth.getPassword())) {
             return new SigninPayload(user.getId(), user);

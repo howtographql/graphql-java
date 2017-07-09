@@ -17,7 +17,7 @@ public class VoteRepository {
 
     private final MongoCollection<Document> votes;
 
-    public VoteRepository(MongoCollection<Document> votes) {
+    VoteRepository(MongoCollection<Document> votes) {
         this.votes = votes;
     }
 
