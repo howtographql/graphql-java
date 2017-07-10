@@ -1,8 +1,24 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    allLinks(filter: LinkFilter, skip: Int = 0, first: Int = 0): [Link]
+}
+
+type Mutation {
+    createLink(url: String!, description: String!): Link
+    createUser(name: String!, authProvider: AuthData!): User
+    signinUser(auth: AuthData): SigninPayload
+    createVote(linkId: ID, userId: ID): Vote
+}
+
 type Link {
     id: ID!
     url: String!
     description: String
-    postedBy: User!
+    postedBy: User
 }
 
 type User {
@@ -10,11 +26,6 @@ type User {
     name: String!
     email: String
     password: String
-}
-
-input AuthData {
-    email: String!
-    password: String!
 }
 
 type SigninPayload {
@@ -29,20 +40,14 @@ type Vote {
     link: Link!
 }
 
+input AuthData {
+    email: String!
+    password: String!
+}
+
+input LinkFilter {
+    description_contains: String
+    url_contains: String
+}
+
 scalar DateTime
-
-type Query {
-    allLinks: [Link]
-}
-
-type Mutation {
-    createLink(url: String!, description: String!): Link
-    createUser(name: String!, authProvider: AuthData!): User
-    signinUser(auth: AuthData): SigninPayload!
-    createVote(linkId: ID, userId: ID): Vote
-}
-
-schema {
-    query: Query
-    mutation: Mutation
-}

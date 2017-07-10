@@ -1,15 +1,19 @@
 package com.howtographql.hackernews;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.regex;
 
 /**
  * Created by bojan.tomic on 7/2/17.
@@ -18,7 +22,7 @@ public class LinkRepository {
     
     private final MongoCollection<Document> links;
 
-    public LinkRepository(MongoCollection<Document> links) {
+    LinkRepository(MongoCollection<Document> links) {
         this.links = links;
     }
 
@@ -27,11 +31,12 @@ public class LinkRepository {
         return link(doc);
     }
     
-    public List<Link> getAllLinks() {
-        links.deleteOne(Filters.eq("_id", new ObjectId("59592cd33b067a54782a64d5")));
-        links.deleteOne(Filters.eq("_id", new ObjectId("595932443b067a54782a64d6")));
+    public List<Link> getAllLinks(LinkFilter filter, int skip, int first) {
+        Optional<Bson> mongoFilter = Optional.ofNullable(filter).map(this::buildFilter);
+        
         List<Link> allLinks = new ArrayList<>();
-        for (Document doc : links.find()) {
+        FindIterable<Document> documents = mongoFilter.map(links::find).orElseGet(links::find);
+        for (Document doc : documents.skip(skip).limit(first)) {
             allLinks.add(link(doc));
         }
         return allLinks;
@@ -43,6 +48,23 @@ public class LinkRepository {
         doc.append("description", link.getDescription());
         doc.append("postedBy", link.getUserId());
         links.insertOne(doc);
+    }
+
+    private Bson buildFilter(LinkFilter filter) {
+        String descriptionPattern = filter.getDescriptionContains();
+        String urlPattern = filter.getUrlContains();
+        Bson descriptionCondition = null;
+        Bson urlCondition = null;
+        if (descriptionPattern != null && !descriptionPattern.isEmpty()) {
+            descriptionCondition = regex("description", ".*" + descriptionPattern + ".*", "i");
+        }
+        if (urlPattern != null && !urlPattern.isEmpty()) {
+            urlCondition = regex("url", ".*" + urlPattern + ".*", "i");
+        }
+        if (descriptionCondition != null && urlCondition != null) {
+            return and(descriptionCondition, urlCondition);
+        }
+        return descriptionCondition != null ? descriptionCondition : urlCondition;
     }
     
     private Link link(Document doc) {
