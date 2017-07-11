@@ -1,7 +1,7 @@
 package com.howtographql.hackernews;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * Data-class representing a link
  */
 public class Link {
     

@@ -11,7 +11,7 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.eq;
 
 /**
- * Created by bojan.tomic on 7/3/17.
+ * Manages vote persistence
  */
 public class VoteRepository {
 

@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import graphql.servlet.GraphQLContext;
 
 /**
- * Created by bojan.tomic on 7/3/17.
+ * Objects of this class are intended to be used as context during operation execution.
+ * Can be used to obtain the currently logged-in user.
  */
 public class AuthContext extends GraphQLContext {
     

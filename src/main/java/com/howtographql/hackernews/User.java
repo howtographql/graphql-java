@@ -1,7 +1,7 @@
 package com.howtographql.hackernews;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * Represents a user of the system
  */
 public class User {
 

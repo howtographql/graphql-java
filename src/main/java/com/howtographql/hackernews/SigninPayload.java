@@ -1,7 +1,7 @@
 package com.howtographql.hackernews;
 
 /**
- * Created by bojan.tomic on 7/3/17.
+ * Represents a logged in user and the token to be used to authenticate subsequent requests
  */
 public class SigninPayload {
     

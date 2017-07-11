@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import graphql.ExceptionWhileDataFetching;
 
 /**
- * Created by bojan.tomic on 7/3/17.
+ * A simple wrapper that prevents stack traces from reaching the client 
  */
 public class SanitizedError extends ExceptionWhileDataFetching {
     

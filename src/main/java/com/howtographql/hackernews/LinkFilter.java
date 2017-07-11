@@ -3,7 +3,7 @@ package com.howtographql.hackernews;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Created by bojan.tomic on 7/9/17.
+ * Represents a filter for searching for links
  */
 public class LinkFilter {
 

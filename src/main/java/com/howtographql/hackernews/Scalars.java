@@ -11,7 +11,7 @@ import graphql.schema.Coercing;
 import graphql.schema.GraphQLScalarType;
 
 /**
- * Created by bojan.tomic on 7/3/17.
+ * Class containing custom scalars 
  */
 public class Scalars {
     

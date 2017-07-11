@@ -9,7 +9,7 @@ import graphql.GraphQLException;
 import graphql.schema.DataFetchingEnvironment;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * Mutation root
  */
 public class Mutation implements GraphQLRootResolver {
     

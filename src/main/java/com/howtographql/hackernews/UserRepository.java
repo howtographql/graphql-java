@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 import static com.mongodb.client.model.Filters.eq;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * Manages user persistence
  */
 public class UserRepository {
 

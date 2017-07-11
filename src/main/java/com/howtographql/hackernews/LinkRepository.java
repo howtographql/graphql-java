@@ -16,7 +16,7 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.regex;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * Manages link persistence
  */
 public class LinkRepository {
     

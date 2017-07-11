@@ -1,7 +1,7 @@
 package com.howtographql.hackernews;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * A wrapper around the email and password
  */
 public class AuthData {
 

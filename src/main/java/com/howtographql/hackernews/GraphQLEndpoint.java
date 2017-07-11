@@ -20,7 +20,7 @@ import graphql.servlet.GraphQLContext;
 import graphql.servlet.SimpleGraphQLServlet;
 
 /**
- * Created by bojan.tomic on 7/1/17.
+ * The servlet acting as the GraphQL endpoint
  */
 @WebServlet(urlPatterns = "/graphql")
 public class GraphQLEndpoint extends SimpleGraphQLServlet {

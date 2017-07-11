@@ -3,7 +3,7 @@ package com.howtographql.hackernews;
 import java.time.ZonedDateTime;
 
 /**
- * Created by bojan.tomic on 7/3/17.
+ * Represents a vote cast by a user for a link
  */
 public class Vote {
     private final String id;

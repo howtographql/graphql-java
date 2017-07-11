@@ -5,7 +5,7 @@ import com.coxautodev.graphql.tools.GraphQLRootResolver;
 import java.util.List;
 
 /**
- * Created by bojan.tomic on 7/2/17.
+ * Query root. Contains top-level queries.
  */
 class Query implements GraphQLRootResolver {
 
