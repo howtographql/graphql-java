@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.howtographql.sample</groupId>
-    <artifactId>hackernews</artifactId>
+    <artifactId>hackernews-graphql-java</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>HowToGraphQL sample Hacker News clone</name>
+    <name>HowToGraphQL sample HackerNews clone</name>
     <url>http://www.howtographql.com</url>
 
     <dependencies>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
-            <version>3.1.3</version>
+            <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>
