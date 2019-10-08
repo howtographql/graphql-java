@@ -26,8 +26,7 @@ public class Mutation implements GraphQLRootResolver {
     public Link createLink(String url, String description, DataFetchingEnvironment env) {
         AuthContext context = env.getContext();
         Link newLink = new Link(url, description, context.getUser().getId());
-        linkRepository.saveLink(newLink);
-        return newLink;
+        return linkRepository.saveLink(newLink);
     }
     
     public User createUser(String name, AuthData auth) {
